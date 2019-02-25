@@ -13,23 +13,57 @@
 
   <body>
 <!-- ferst image tag-->
-  <%= image_tag  "/assets/images/DSC_1267.jpeg" %>
+  
+  <div class="container-fluid">
+            <nav class="navbar navbar-light" role="navigation">
+                <div class="navbar-header">
+                    
+                      <span class="sr-only">Toggle navigation</span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                    
+                    <%= link_to "Blog", home_index_path, class: "navbar-brand" %>
+                    
+                      
+                      <div class="visible-xs-block" style="margin: 30px 80px" align="">
+                      <ul>
+                      <li><%= link_to "Articles", articles_path, class: "active" %></li>
+                      <li><%= link_to "New", new_article_path %></li>
+                      <ul>
+                      </div>
+                    
+                  </div>
+                <!-- /.navbar-collapse -->
+            </nav>
 
-  
+            <div class="pos-f-t">
+        <div class="collapse" id="navbarToggleExternalContent">
+          <div class="bg-dark p-4">
+            <h5 class="text-white h4"><%= link_to "Blog", home_index_path %></h5>
+            <span class="text-muted"><%= link_to "Articles", articles_path %></span>
+            <span class="text-muted"><%= link_to "New", new_article_path %></span>
+          </div>
+        </div>
 
-  <% if user_signed_in? %>
+        <div class="navbar-header">
+            <% if user_signed_in? %>
 
-  Hello, <%= current_user.username %> | <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
-  
-  <% else %>
+            <div>Hello, <%= current_user.username %></div> |<div> <%= link_to 'Sign out', destroy_user_session_path, method: :delete %></div>
+            
+            <% else %>
 
-  <%= link_to 'Sign in', new_user_session_path %> 
+            <%= link_to 'Sign in', new_user_session_path %> 
+            
+            <% end %>
+        </div>
   
-  <% end %>
   
-  
-  <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
-    <%= yield %>
+            <p class="notice"><%= notice %></p>
+                <p class="alert"><%= alert %></p>
+
+
+            <%= yield %>
+    </div>
   </body>
 </html>

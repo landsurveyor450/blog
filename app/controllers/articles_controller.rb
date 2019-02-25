@@ -7,6 +7,7 @@ class ArticlesController < ApplicationController
 
     def show
         @article = Article.find(params[:id])
+
     end
 
     def edit
@@ -28,7 +29,13 @@ class ArticlesController < ApplicationController
 
     def create
         @article = Article.new(article_params)
-        @article.save
+        @article.autor = current_user.username
+
+        if @article.save
+            redirect_to @article
+        else
+            render action: new
+        end
     end
 
     def destroy
