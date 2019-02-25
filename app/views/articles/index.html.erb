@@ -1,0 +1,12 @@
+
+<% @article.each do |article| %>
+
+<h3><%= article.title %></h3>
+    <h5><%= article.text %></h5>
+
+    <p> <%= link_to 'Show', article_path(article) %> |
+        <%= link_to 'Edit', edit_article_path(article) %> | 
+        <%= link_to 'Destroy', article_path(article), method: :delete, data: {comfirm: 'are you shure?'} %> </p>
+    <p>========================================================================</p>
+
+<% end %>
