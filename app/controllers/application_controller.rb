@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-    class ApplicationController < ActionController::Base
+    
         before_action :configure_permitted_parameters, if: :devise_controller?
 
         private
@@ -8,5 +8,5 @@ class ApplicationController < ActionController::Base
             devise_parameter_sanitizer.permit(:sign_up) << :username
 
         end
-    end
+    
 end
